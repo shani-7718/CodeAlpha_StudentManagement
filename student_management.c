@@ -37,19 +37,17 @@ void displayStudents()
     FILE *fp = fopen("students.txt", "rb");
     struct Student s;
 
-    if(fp==NULL)
+    if (fp == NULL)
     {
         printf("No Records Found!\n");
         return;
     }
 
-    printf("\n-----------------------------------------\n");
-    printf("ID\tName\t\tMarks\n");
-    printf("-----------------------------------------\n");
+    printf("\nID\tName\t\tMarks\n");
 
-    while(fread(&s,sizeof(s),1,fp))
+    while (fread(&s, sizeof(struct Student), 1, fp) == 1)
     {
-        printf("%d\t%-15s\t%.2f\n",s.id,s.name,s.marks);
+        printf("%d\t%s\t%.2f\n", s.id, s.name, s.marks);
     }
 
     fclose(fp);
